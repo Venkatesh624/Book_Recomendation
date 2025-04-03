@@ -102,7 +102,25 @@ var _s = __turbopack_context__.k.signature();
 ;
 function BookCard({ book, onFavoriteToggle, isFavorite }) {
     _s();
-    const [imgSrc, setImgSrc] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg` : "/book-placeholder.jpg");
+    const [imgSrc, setImgSrc] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("/book-placeholder.jpg");
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "BookCard.useEffect": ()=>{
+            if (book.cover_id) {
+                const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg`;
+                // Test if the image exists
+                const img = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]();
+                img.src = coverUrl;
+                img.onload = ({
+                    "BookCard.useEffect": ()=>setImgSrc(coverUrl)
+                })["BookCard.useEffect"];
+                img.onerror = ({
+                    "BookCard.useEffect": ()=>setImgSrc("/book-placeholder.jpg")
+                })["BookCard.useEffect"];
+            }
+        }
+    }["BookCard.useEffect"], [
+        book.cover_id
+    ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow hover:transform hover:scale-105 duration-200",
         children: [
@@ -118,12 +136,12 @@ function BookCard({ book, onFavoriteToggle, isFavorite }) {
                     priority: false
                 }, void 0, false, {
                     fileName: "[project]/src/app/components/BookCard.js",
-                    lineNumber: 15,
+                    lineNumber: 22,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/components/BookCard.js",
-                lineNumber: 14,
+                lineNumber: 21,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -135,7 +153,7 @@ function BookCard({ book, onFavoriteToggle, isFavorite }) {
                         children: book.title
                     }, void 0, false, {
                         fileName: "[project]/src/app/components/BookCard.js",
-                        lineNumber: 26,
+                        lineNumber: 33,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -144,7 +162,7 @@ function BookCard({ book, onFavoriteToggle, isFavorite }) {
                         children: book.author || "Unknown Author"
                     }, void 0, false, {
                         fileName: "[project]/src/app/components/BookCard.js",
-                        lineNumber: 29,
+                        lineNumber: 36,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -158,14 +176,14 @@ function BookCard({ book, onFavoriteToggle, isFavorite }) {
                                         children: "★"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/BookCard.js",
-                                        lineNumber: 34,
+                                        lineNumber: 41,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: book.rating || "N/A"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/BookCard.js",
-                                        lineNumber: 35,
+                                        lineNumber: 42,
                                         columnNumber: 13
                                     }, this),
                                     book.year && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -177,13 +195,13 @@ function BookCard({ book, onFavoriteToggle, isFavorite }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/components/BookCard.js",
-                                        lineNumber: 37,
+                                        lineNumber: 44,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/components/BookCard.js",
-                                lineNumber: 33,
+                                lineNumber: 40,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -201,29 +219,29 @@ function BookCard({ book, onFavoriteToggle, isFavorite }) {
                                 children: isFavorite ? "Remove" : "Save"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/components/BookCard.js",
-                                lineNumber: 40,
+                                lineNumber: 47,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/components/BookCard.js",
-                        lineNumber: 32,
+                        lineNumber: 39,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/components/BookCard.js",
-                lineNumber: 25,
+                lineNumber: 32,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/components/BookCard.js",
-        lineNumber: 13,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
-_s(BookCard, "GyvSoFdxTRDDoZ7ZYMyV/H9CPCo=");
+_s(BookCard, "/W57D76YcUFBKpaZ9DKFyvuG8qE=");
 _c = BookCard;
 var _c;
 __turbopack_context__.k.register(_c, "BookCard");
@@ -530,7 +548,7 @@ function Carousel() {
             id: 'featured2',
             title: 'Featured Book 2',
             description: 'Award winning novel',
-            image: '/banner2.jpg',
+            image: '/awardwinning.webp',
             cta: 'Learn More'
         }
     ];

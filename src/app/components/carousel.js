@@ -18,7 +18,7 @@ export default function Carousel() {
       id: 'featured2',
       title: 'Featured Book 2',
       description: 'Award winning novel',
-      image: '/banner2.jpg',
+      image: '/awardwinning.webp',
       cta: 'Learn More'
     }
   ]

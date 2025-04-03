@@ -1,13 +1,20 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function BookCard({ book, onFavoriteToggle, isFavorite }) {
-  const [imgSrc, setImgSrc] = useState(
-    book.cover_id
-      ? `https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg`
-      : "/book-placeholder.jpg"
-  );
+  const [imgSrc, setImgSrc] = useState("/book-placeholder.jpg");
+
+  useEffect(() => {
+    if (book.cover_id) {
+      const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg`;
+      // Test if the image exists
+      const img = new Image();
+      img.src = coverUrl;
+      img.onload = () => setImgSrc(coverUrl);
+      img.onerror = () => setImgSrc("/book-placeholder.jpg");
+    }
+  }, [book.cover_id]);
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow hover:transform hover:scale-105 duration-200">
